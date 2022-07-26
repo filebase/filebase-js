@@ -91,7 +91,7 @@ function parseToken(tokenToParse) {
 
 /**
  */
-class FilebaseStorage {
+class FilebaseClient {
   /**
    * Constructs a client bound to the given `options.token` and
    * `options.endpoint`.

@@ -1,7 +1,7 @@
 {
-  "name": "filebase.storage",
+  "name": "@filebase/client",
   "version": "0.0.1",
-  "description": "A client library for the https://filebase.com/ service. It provides a convenient interface for working with the HTTP API from a web browser or Node.js",
+  "description": "A client library for the https://filebase.com/ service. It provides a convenient interface for working with the S3 API and IPFS Buckets from Node.js",
   "license": "(Apache-2.0 OR MIT)",
   "type": "module",
   "types": "./dist/src/lib.d.ts",
@@ -90,10 +90,10 @@
     "typedoc-plugin-missing-exports": "^0.22.3",
     "uvu": "0.5.2"
   },
-  "homepage": "https://github.com/filebase/filebase.storage/tree/main",
-  "bugs": "https://github.com/filebase/filebase.storage/issues",
+  "homepage": "https://github.com/filebase/filebase-js/tree/main",
+  "bugs": "https://github.com/filebase/filebase-js/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/filebase/filebase.storage.git"
+    "url": "https://github.com/filebase/filebase-js.git"
   }
 }
