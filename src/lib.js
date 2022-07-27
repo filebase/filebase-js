@@ -6,8 +6,8 @@
  *
  * @example
  * ```js
- * import { FilebaseStorage, File, Blob } from "filebase.storage"
- * const client = new FilebaseStorage({ token: API_TOKEN })
+ * import { FilebaseClient, File, Blob } from "filebase.storage"
+ * const client = new FilebaseClient({ token: API_TOKEN })
  *
  * const cid = await client.storeBlob(new Blob(['hello world']))
  * ```
@@ -98,16 +98,16 @@ class FilebaseClient {
    *
    * @example
    * ```js
-   * import { FilebaseStorage, File, Blob } from "filebase.storage"
-   * const client = new FilebaseStorage({ token: API_TOKEN })
+   * import { FilebaseClient, File, Blob } from "filebase.storage"
+   * const client = new FilebaseClient({ token: API_TOKEN })
    *
    * const cid = await client.storeBlob(new Blob(['hello world']))
    * ```
    * Optionally you could pass an alternative API endpoint (e.g. for testing)
    * @example
    * ```js
-   * import { FilebaseStorage } from "filebase.storage"
-   * const client = new FilebaseStorage({
+   * import { FilebaseClient } from "filebase.storage"
+   * const client = new FilebaseClient({
    *   token: API_TOKEN
    *   endpoint: new URL('http://localhost:8080/')
    * })
@@ -158,8 +158,8 @@ class FilebaseClient {
     const blockstore = new Blockstore()
 
     try {
-      const { cid, car } = await FilebaseStorage.encodeBlob(blob, { blockstore })
-      await FilebaseStorage.storeCar(service, car, objectName || cid.toString())
+      const { cid, car } = await FilebaseClient.encodeBlob(blob, { blockstore })
+      await FilebaseClient.storeCar(service, car, objectName || cid.toString())
 
       return cid.toString();
     } finally {
@@ -267,11 +267,11 @@ class FilebaseClient {
     const blockstore = new Blockstore()
     let cidString
     try {
-      const { cid, car } = await FilebaseStorage.encodeDirectory(filesSource, {
+      const { cid, car } = await FilebaseClient.encodeDirectory(filesSource, {
         blockstore,
       })
       cidString = cid.toString()
-      await FilebaseStorage.storeCar(service, car, objectName || cid.toString())
+      await FilebaseClient.storeCar(service, car, objectName || cid.toString())
     } finally {
       await blockstore.close()
     }
@@ -304,8 +304,8 @@ class FilebaseClient {
    * @returns {Promise<TokenType<T>>}
    */
   static async store(service, metadata, objectName = null) {
-    const { token, car, cid } = await FilebaseStorage.encodeNFT(metadata)
-    await FilebaseStorage.storeCar(service, car, objectName || cid.toString())
+    const { token, car, cid } = await FilebaseClient.encodeNFT(metadata)
+    await FilebaseClient.storeCar(service, car, objectName || cid.toString())
     return token
   }
 
@@ -454,7 +454,7 @@ class FilebaseClient {
    *
    * @example
    * ```js
-   * const { token, car } = await FilebaseStorage.encodeNFT({
+   * const { token, car } = await FilebaseClient.encodeNFT({
    *   name: 'filebase.storage store test',
    *   description: 'Test ERC-1155 compatible metadata.',
    *   image: new File(['<DATA>'], 'pinpie.jpg', { type: 'image/jpg' }),
@@ -487,7 +487,7 @@ class FilebaseClient {
    * @example
    * ```js
    * const content = new Blob(['hello world'])
-   * const { cid, car } = await FilebaseStorage.encodeBlob(content)
+   * const { cid, car } = await FilebaseClient.encodeBlob(content)
    *
    * // Root CID of the file
    * console.log(cid.toString())
@@ -519,7 +519,7 @@ class FilebaseClient {
    *
    * @example
    * ```js
-   * const { cid, car } = await FilebaseStorage.encodeDirectory([
+   * const { cid, car } = await FilebaseClient.encodeDirectory([
    *   new File(['hello world'], 'hello.txt'),
    *   new File([JSON.stringify({'from': 'incognito'}, null, 2)], 'metadata.json')
    * ])
@@ -573,7 +573,7 @@ class FilebaseClient {
    * @param {string | null} objectName
    */
   storeBlob(blob, objectName = null) {
-    return FilebaseStorage.storeBlob(this, blob, objectName)
+    return FilebaseClient.storeBlob(this, blob, objectName)
   }
 
   /**
@@ -615,7 +615,7 @@ class FilebaseClient {
    * @param {import('./lib/interface.js').CarStorerOptions} [options]
    */
   storeCar(car, objectName, options) {
-    return FilebaseStorage.storeCar(this, car, objectName, options)
+    return FilebaseClient.storeCar(this, car, objectName, options)
   }
 
   /**
@@ -637,7 +637,7 @@ class FilebaseClient {
    * @param {string | null} objectName
    */
   storeDirectory(files, objectName = null) {
-    return FilebaseStorage.storeDirectory(this, files, objectName)
+    return FilebaseClient.storeDirectory(this, files, objectName)
   }
 
   /**
@@ -653,7 +653,7 @@ class FilebaseClient {
    * @param {string | null} objectName
    */
   status(cid, objectName = null) {
-    return FilebaseStorage.status(this, cid, objectName)
+    return FilebaseClient.status(this, cid, objectName)
   }
 
   /**
@@ -671,7 +671,7 @@ class FilebaseClient {
    * @param {string | null} objectName
    */
   delete(cid, objectName = null) {
-    return FilebaseStorage.delete(this, cid, objectName)
+    return FilebaseClient.delete(this, cid, objectName)
   }
 
   /**
@@ -715,7 +715,7 @@ class FilebaseClient {
    * @param {string | null} objectName
    */
   store(token, objectName = null) {
-    return FilebaseStorage.store(this, token, objectName)
+    return FilebaseClient.store(this, token, objectName)
   }
 }
 
@@ -799,4 +799,4 @@ function toImportCandidate(path, blob) {
   }
 }
 
-export { FilebaseStorage, File, Blob, FormData, toGatewayURL, Token }
+export { FilebaseClient, File, Blob, FormData, toGatewayURL, Token }
