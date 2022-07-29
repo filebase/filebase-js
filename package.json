@@ -56,7 +56,7 @@
     "@web-std/file": "^3.0.0",
     "@web-std/form-data": "^3.0.0",
     "carbites": "^1.0.6",
-    "ipfs-car": "^0.6.2",
+    "ipfs-car": "github:filebase/ipfs-car#cid-version-support-dist",
     "it-pipe": "^1.1.0",
     "multiformats": "^9.6.4",
     "p-retry": "^4.6.1",

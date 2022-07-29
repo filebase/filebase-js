@@ -773,7 +773,7 @@ For more context please see ERC-721 specification https://eips.ethereum.org/EIPS
 const packCar = async (input, { blockstore, wrapWithDirectory } = {}) => {
   /* c8 ignore next 1 */
   blockstore = blockstore || new Blockstore()
-  const { root: cid, out } = await pack({ input, blockstore, wrapWithDirectory, rawLeaves: false })
+  const { root: cid, out } = await pack({ input, blockstore, wrapWithDirectory, rawLeaves: false, cidVersion: 0 })
   const car = new BlockstoreCarReader(1, [cid], blockstore)
   return { cid, carReader: car, car: out }
 }
