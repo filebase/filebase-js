@@ -12,7 +12,7 @@ export const GATEWAY = new URL('https://ipfs.filebase.io/')
  *
  * @param {string|URL} url An IPFS URL e.g. ipfs://bafy.../path
  * @param {GatewayURLOptions} [options] Options that allow customization of the gateway used.
- * @returns {URL} An IPFS gateway URL e.g. https://nftstorage.link/ipfs/bafy.../path
+ * @returns {URL} An IPFS gateway URL e.g. https://ipfs.filebase.io/ipfs/bafy.../path
  */
 export const toGatewayURL = (url, options = {}) => {
   const gateway = options.gateway || GATEWAY
