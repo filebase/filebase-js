@@ -1,6 +1,6 @@
 {
   "name": "@filebase/client",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A client library for the https://filebase.com/ service. It provides a convenient interface for working with the S3 API and IPFS Buckets from Node.js",
   "license": "(Apache-2.0 OR MIT)",
   "type": "module",

@@ -23,7 +23,7 @@ import { BlockstoreCarReader } from './bs-car-reader.js'
 import pipe from 'it-pipe'
 import { Upload } from "@aws-sdk/lib-storage";
 import { S3Client, HeadObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
-import stream from 'node:stream'
+import stream from 'stream'
 
 const MAX_STORE_RETRIES = 5
 const MAX_CONCURRENT_UPLOADS = 4
@@ -64,7 +64,8 @@ function parseToken(tokenToParse) {
     }
   }
 
-  const token = atob(tokenToParse).split(':')
+  const tokenBuffer = Buffer.from(tokenToParse, 'base64')
+  const token = tokenBuffer.toString('ascii').split(':')
   const bucket = token[2]
 
   if (typeof token === "undefined" || !Array.isArray(token)) {
@@ -237,8 +238,7 @@ class FilebaseClient {
       onStoredChunk && onStoredChunk(progressBytes)
     });
 
-    const uploadResult = await parallelUploads3.done();
-    console.dir(uploadResult);
+    await parallelUploads3.done();
 
     const headCommand = new HeadObjectCommand({
       Bucket: this.bucket,
