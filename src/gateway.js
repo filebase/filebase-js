@@ -1,4 +1,4 @@
-export const GATEWAY = new URL('https://nftstorage.link/')
+export const GATEWAY = new URL('https://ipfs.filebase.io/')
 
 /**
  * @typedef {string|URL} GatewayURL Base URL of an IPFS Gateway e.g. https://dweb.link/ or https://ipfs.io/
