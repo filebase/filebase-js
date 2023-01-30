@@ -1,6 +1,6 @@
 {
   "name": "@filebase/client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A client library for the https://filebase.com/ service. It provides a convenient interface for working with the S3 API and IPFS Buckets from Node.js",
   "license": "(Apache-2.0 OR MIT)",
   "type": "module",
@@ -38,6 +38,10 @@
     "./src/platform.js": "./src/platform.web.js"
   },
   "scripts": {
+    "test": "run-s test:*",
+    "test:web": "node test/test.js playwright-test test/*.spec.js --cov && nyc report",
+    "test:es": "node test/test.js hundreds mocha test/*.spec.js --exit",
+    "test:cjs": "npm run build:cjs && node test/test.js mocha dist/**/*.spec.cjs --exit",
     "build": "run-s build:*",
     "build:ts": "tsc --build",
     "build:cjs": "rollup --config rollup.config.js",
@@ -56,7 +60,7 @@
     "@web-std/file": "^3.0.0",
     "@web-std/form-data": "^3.0.0",
     "carbites": "^1.0.6",
-    "ipfs-car": "github:filebase/ipfs-car#cid-version-support-dist",
+    "ipfs-car": "github:filebase/ipfs-car#support-esm",
     "it-pipe": "^1.1.0",
     "multiformats": "^9.6.4",
     "p-retry": "^4.6.1",
