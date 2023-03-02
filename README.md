@@ -1,4 +1,4 @@
-# filebase-js
+# @filebase/client
 
 ![ci][ci.icon]
 [![package][version.icon]][package.url]
@@ -13,13 +13,13 @@ A client library for the https://filebase.com/ service. It provides a convenient
 Install the package using npm
 
 ```
-npm install filebase-js
+npm install @filebase/client
 ```
 
 Or yarn
 
 ```
-yarn add filebase-js
+yarn add @filebase/client
 ```
 
 ## Usage
@@ -27,8 +27,8 @@ yarn add filebase-js
 First, obtain an API token from https://filebase.com and use it in place of `API_TOKEN` below:
 
 ```js
-import { FilebaseStorage, File } from 'filebase-js'
-const client = new FilebaseStorage({ token: 'API_TOKEN' })
+import { FilebaseClient, File } from '@filebase/client'
+const client = new FilebaseClient({ token: 'API_TOKEN' })
 
 async function main() {
   const metadata = await client.store({
@@ -57,14 +57,14 @@ Run the script:
 node index.mjs # or index.js
 ```
 
-For more examples please see the [API documentation](https://filebase.github.io/filebase-js/).
+For more examples please see the [API documentation](https://docs.filebase.com/code-development-+-sdks/code-development/filebase-npm-package).
 
 [raw http api]: https://docs.filebase.com/api-documentation/s3-compatible-api
 [node.js]: https://nodejs.org/
-[api documentation]: https://filebase.github.io/filebase-js/
+[api documentation]: [https://docs.filebase.com/code-development-+-sdks/code-development/filebase-npm-package]
 [ci.icon]: https://github.com/filebase/filebase-js/actions/workflows/client.yml/badge.svg
 [version.icon]: https://img.shields.io/npm/v/filebase-js.svg
-[package.url]: https://npmjs.org/package/filebase-js
+[package.url]: https://npmjs.org/package/@filebase/client
 [prettier.icon]: https://img.shields.io/badge/styled_with-prettier-ff69b4.svg
 [prettier.url]: https://github.com/prettier/prettier
 [size.icon]: https://badgen.net/bundlephobia/minzip/filebase-js
