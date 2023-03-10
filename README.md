@@ -26,9 +26,7 @@ First, obtain an API token from https://filebase.com and use it in place of `API
 
 ```js
 import { FilebaseClient, File } from '@filebase/client'
-const filebaseClient = new FilebaseClient({
-  token: 'API_TOKEN'
-})
+const client = new FilebaseClient({ token: 'API_TOKEN' })
 
 const metadata = await client.store({
 name: 'Pinpie',
@@ -65,13 +63,13 @@ Run the script:
 node index.mjs # or index.js
 ```
 
-For more examples please see the [API documentation](https://filebase.github.io/filebase-js/).
+For more examples please see the [API documentation](https://docs.filebase.com/code-development-+-sdks/code-development/filebase-npm-package).
 
 [raw http api]: https://docs.filebase.com/api-documentation/s3-compatible-api
 [node.js]: https://nodejs.org/
-[api documentation]: https://filebase.github.io/filebase-js/
-[version.icon]: https://img.shields.io/npm/v/@filebase/client.svg
-[package.url]: https://www.npmjs.com/package/@filebase/client
+[api documentation]: [https://docs.filebase.com/code-development-+-sdks/code-development/filebase-npm-package]
+[version.icon]: https://img.shields.io/npm/v/filebase-js.svg
+[package.url]: https://npmjs.org/package/@filebase/client
 [prettier.icon]: https://img.shields.io/badge/styled_with-prettier-ff69b4.svg
 [prettier.url]: https://github.com/prettier/prettier
 [size.icon]: https://badgen.net/bundlephobia/minzip/@filebase/client
