@@ -45,9 +45,7 @@ console.log(metadata.url)
 
 ```js
 import { FilebaseClient } from '@filebase/client'
-const filebaseClient = new FilebaseClient({
-  token: 'API_TOKEN'
-})
+const filebaseClient = new FilebaseClient({ token: 'API_TOKEN' })
 
 const content = new Blob(['hello world'])
 const cid = await filebaseClient.storeBlob(content)
