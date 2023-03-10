@@ -26,9 +26,9 @@ First, obtain an API token from https://filebase.com and use it in place of `API
 
 ```js
 import { FilebaseClient, File } from '@filebase/client'
-const client = new FilebaseClient({ token: 'API_TOKEN' })
+const filebaseClient = new FilebaseClient({ token: 'API_TOKEN' })
 
-const metadata = await client.store({
+const metadata = await filebaseClient.store({
     name: 'Pinpie',
     description: 'Pin is not delicious beef!',
     image: new File(
