@@ -29,15 +29,15 @@ import { FilebaseClient, File } from '@filebase/client'
 const client = new FilebaseClient({ token: 'API_TOKEN' })
 
 const metadata = await client.store({
-name: 'Pinpie',
-description: 'Pin is not delicious beef!',
-image: new File(
-  [
-    /* data */
-  ],
-  'pinpie.jpg',
-  { type: 'image/jpg' }
-),
+    name: 'Pinpie',
+    description: 'Pin is not delicious beef!',
+    image: new File(
+      [
+        /* data */
+      ],
+      'pinpie.jpg',
+      { type: 'image/jpg' }
+    ),
 })
 console.log(metadata.url)
 // ipfs://bafyreib4pff766vhpbxbhjbqqnsh5emeznvujayjj4z2iu533cprgbz23m/metadata.json
@@ -52,7 +52,7 @@ const filebaseClient = new FilebaseClient({
 const content = new Blob(['hello world'])
 const cid = await filebaseClient.storeBlob(content)
 console.log(cid);
-// ipfs://Qmf412jQZiuVUtdgnB36FXFX7xg5V6KEbSJ4dpQuhkLyfD
+// Qmf412jQZiuVUtdgnB36FXFX7xg5V6KEbSJ4dpQuhkLyfD
 ```
 
 The client uses ESM modules. If running from Node.js, either name your script `index.mjs` or name it `index.js` _and_ use `npm init` to create a new `package.json` file in your project directory, adding `"type": "module",` to it.
