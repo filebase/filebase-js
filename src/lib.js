@@ -224,6 +224,7 @@ class FilebaseClient {
         },
       },
       queueSize: MAX_CONCURRENT_UPLOADS,
+      partSize: 1024 * 1024 * 105,
       leavePartsOnError: false, // optional manually handle dropped parts
     });
 
